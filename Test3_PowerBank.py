@@ -13,8 +13,6 @@ with open("input3.txt", "r") as f:
                 if val > max_bank:
                     max_bank = val
 
-        print(s)
-        print(max_bank)
         totalValue += max_bank
 
 print(totalValue)

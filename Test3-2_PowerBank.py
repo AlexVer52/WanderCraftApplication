@@ -22,8 +22,6 @@ with open("input3.txt", "r") as f:
             stack.append(i)
             max_bank = "".join(stack[:k])
 
-        print(lines)
-        print(max_bank)
         totalValue += int(max_bank)
 
 print(totalValue)

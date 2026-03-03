@@ -1,6 +1,6 @@
 grid = []
 count = 0
-
+case = 2
 with open("input4.txt", "r") as f:
     for line in f:
         lines = line.strip()
@@ -27,22 +27,33 @@ def count_at_neighbors(r, c):
                 count += 1
     return count
 
-while True:
-    # Create a list for position to remove
-    to_remove = []
+if case == 1:
     for r in range(rows):
-        for c in range(cols):
-            cell = grid[r][c]
-            if cell == '@':
-                neighbors = count_at_neighbors(r, c)
-                if neighbors < 4:
-                    count +=1
-                    to_remove.append((r, c))
-            elif cell == '.':
-                continue
-    if not to_remove:
-        break
-    # Remove the cells marked for removal
-    for r, c in to_remove:
-        grid[r][c] = '.'
+            for c in range(cols):
+                cell = grid[r][c]
+                if cell == '@':
+                    neighbors = count_at_neighbors(r, c)
+                    if neighbors < 4:
+                        count +=1
+                elif cell == '.':
+                    continue
+if case == 2:
+    while True:
+        # Create a list for position to remove
+        to_remove = []
+        for r in range(rows):
+            for c in range(cols):
+                cell = grid[r][c]
+                if cell == '@':
+                    neighbors = count_at_neighbors(r, c)
+                    if neighbors < 4:
+                        count +=1
+                        to_remove.append((r, c))
+                elif cell == '.':
+                    continue
+        if not to_remove:
+            break
+        # Remove the cells marked for removal
+        for r, c in to_remove:
+            grid[r][c] = '.'
 print(count)
